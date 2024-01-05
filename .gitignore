@@ -2,6 +2,7 @@
 
 
 /node_modules
+.metadata
 
 # SSH Keys
 
