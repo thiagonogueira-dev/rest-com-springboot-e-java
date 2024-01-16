@@ -14,7 +14,7 @@ public class OpenApiConfig {
     OpenAPI customOpenAPI() {
 		return new OpenAPI()
 			.info(new Info()
-			.title("RESTful API com Java 18 e Spring Boot 3")
+			.title("RESTful API com Java 21 e Spring Boot 3")
 			.version("v1")
 			.description("Descrição da API")
 			.termsOfService("https://thiagonogueira.vercel.app")

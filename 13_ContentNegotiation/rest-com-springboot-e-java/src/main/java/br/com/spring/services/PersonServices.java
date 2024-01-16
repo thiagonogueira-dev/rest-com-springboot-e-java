@@ -71,7 +71,7 @@ public class PersonServices {
 		logger.info("Atualizando uma pessoa!");
 		
 		Person entity = repository.findById(person.getKey())
-		.orElseThrow(() -> new ResourceNotFoundException("Nenhum dado encontrado"));
+			.orElseThrow(() -> new ResourceNotFoundException("Nenhum dado encontrado"));
 		
 		entity.setFirstName(person.getFirstName());
 		entity.setLastName(person.getLastName());

@@ -1,4 +1,4 @@
-package br.com.erudio.unittests.mapper;
+package br.com.spring.unittests.mapper;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
