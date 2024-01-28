@@ -1,11 +1,8 @@
-package br.com.spring.integrationtests.vo;
+package br.com.spring.data.vo.v1;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-import jakarta.xml.bind.annotation.XmlRootElement;
-
-@XmlRootElement
 public class PersonVO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -82,6 +79,4 @@ public class PersonVO implements Serializable {
 				&& Objects.equals(gender, other.gender) && Objects.equals(id, other.id)
 				&& Objects.equals(lastName, other.lastName);
 	}	
-
 }
-
