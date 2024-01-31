@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -112,6 +113,26 @@ public class PersonController {
 	)
 	public PersonVO update(@RequestBody PersonVO person){
 		return service.update(person);
+	}
+	
+	@PatchMapping(value = "/{id}",
+			produces = { MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_YML })
+	@Operation(summary = "Desabilita uma pessoa específica pelo seu ID", description = "Desabilita uma pessoa específica pelo seu ID",
+		tags = {"Pessoas"},
+		responses = {
+			@ApiResponse(description = "Sucesso", responseCode = "200", 
+				content = @Content(schema = @Schema(implementation = PersonVO.class))
+			),
+			@ApiResponse(description = "Sem conteúdo", responseCode = "204", content = @Content),
+			@ApiResponse(description = "Requisição ruim", responseCode = "400", content = @Content),
+			@ApiResponse(description = "Não autorizado", responseCode = "401", content = @Content),
+			@ApiResponse(description = "Não encontrado", responseCode = "404", content = @Content),
+			@ApiResponse(description = "Erro interno do servidor", responseCode = "500", content = @Content),
+		}
+	)
+	public PersonVO disablePerson(@PathVariable(value = "id") Long id){
+		
+		return service.disablePerson(id);
 	}
 	
 	@DeleteMapping(value = "/{id}")
