@@ -6,9 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
@@ -25,6 +22,7 @@ import br.com.spring.integrationtests.controller.withyaml.mapper.YMLMapper;
 import br.com.spring.integrationtests.testcontainers.AbstractIntegrationTest;
 import br.com.spring.integrationtests.vo.AccountCredentialsVO;
 import br.com.spring.integrationtests.vo.PersonVO;
+import br.com.spring.integrationtests.vo.wrappers.WrapperPersonVO;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.config.EncoderConfig;
 import io.restassured.config.RestAssuredConfig;
@@ -286,7 +284,7 @@ public class PersonControllerYamlTest extends AbstractIntegrationTest {
 	@Order(6)
 	public void testFindAll() throws JsonMappingException, JsonProcessingException {
 		
-		var content = given().spec(specification)
+		var wrapper = given().spec(specification)
 				.config(
 					RestAssuredConfig.
 						config()
@@ -302,11 +300,10 @@ public class PersonControllerYamlTest extends AbstractIntegrationTest {
 					.statusCode(200)
 				.extract()
 					.body()
-					.as(PersonVO[].class, objectMapper);
+					.as(WrapperPersonVO.class, objectMapper);
 					//.as(new TypeRef<List<PersonVO>>() {});
 		
-		List<PersonVO> people = Arrays.asList(content);
-
+		var people = wrapper.getEmbedded().getPersons();
 		
 		PersonVO foundPersonOne = people.get(0);
 						
