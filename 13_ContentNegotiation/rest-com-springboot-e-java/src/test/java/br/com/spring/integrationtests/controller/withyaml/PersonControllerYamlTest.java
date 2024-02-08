@@ -413,6 +413,46 @@ public class PersonControllerYamlTest extends AbstractIntegrationTest {
 
 	}
 
+	@Test
+	@Order(7)
+	public void testHATEOAS() throws JsonMappingException, JsonProcessingException {
+		
+		var content = given().spec(specification)
+				.contentType(TestConfigs.CONTENT_TYPE_YAML)
+				.accept(TestConfigs.CONTENT_TYPE_YAML)
+				.queryParams("page", 3, "size", 10, "direction", "asc")
+				.when()
+					.get()
+				.then()
+					.statusCode(200)
+				.extract()
+					.body()
+					.asString();
+		
+		
+		assertTrue(content.contains("links:\n"
+				+ "  - rel: \"self\"\n"
+				+ "    href: \"http://localhost:8888/api/person/v1/679\"\n"
+				+ "  links: []"));
+		assertTrue(content.contains("links:\n"
+				+ "  - rel: \"self\"\n"
+				+ "    href: \"http://localhost:8888/api/person/v1/246\"\n"
+				+ "  links: []"));
+		assertTrue(content.contains("links:\n"
+				+ "  - rel: \"self\"\n"
+				+ "    href: \"http://localhost:8888/api/person/v1/528\"\n"
+				+ "  links: []"));
+		
+		assertTrue(content.contains("page:\n"
+				+ "  size: 10\n"
+				+ "  totalElements: 1005\n"
+				+ "  totalPages: 101\n"
+				+ "  number: 3"));
+		assertTrue(content.contains("- rel: \"last\"\n"
+				+ "  href: \"http://localhost:8888/api/person/v1?direction=asc&page=100&size=10&sort=firstName,asc\""));
+		
+	}
+	
 	private void mockPerson() {
 		person.setFirstName("Nelson");
 		person.setLastName("Piquet");
