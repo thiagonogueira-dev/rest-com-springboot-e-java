@@ -374,6 +374,16 @@ public class PersonControllerXmlTest extends AbstractIntegrationTest {
 					.body()
 					.asString();
 		
+		System.out.println(""
+				+ ""
+				+ ""
+				+ ""
+				+ ""
+				+ content + ""
+				+ ""
+				+ ""
+				+ "");
+		
 		assertTrue(content.contains("<links><rel>self</rel><href>http://localhost:8888/api/person/v1/596</href></links>"));
 		assertTrue(content.contains("<links><rel>self</rel><href>http://localhost:8888/api/person/v1/422</href></links>"));
 		assertTrue(content.contains("<links><rel>self</rel><href>http://localhost:8888/api/person/v1/933</href></links>"));

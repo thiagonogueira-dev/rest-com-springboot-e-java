@@ -361,6 +361,16 @@ public class PersonControllerJsonTest extends AbstractIntegrationTest {
 					.asString();
 					//.as(new TypeRef<List<PersonVO>>() {});
 		
+		System.out.println(""
+				+ ""
+				+ ""
+				+ ""
+				+ ""
+				+ content + ""
+				+ ""
+				+ ""
+				+ "");
+		
 		assertTrue(content.contains("\"_links\":{\"self\":{\"href\":\"http://localhost:8888/api/person/v1/805\"}}"));
 		assertTrue(content.contains("\"_links\":{\"self\":{\"href\":\"http://localhost:8888/api/person/v1/103\"}}"));
 		assertTrue(content.contains("\"_links\":{\"self\":{\"href\":\"http://localhost:8888/api/person/v1/684\"}}"));

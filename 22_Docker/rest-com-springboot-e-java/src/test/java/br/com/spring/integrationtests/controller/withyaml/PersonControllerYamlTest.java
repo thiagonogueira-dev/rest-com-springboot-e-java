@@ -429,6 +429,15 @@ public class PersonControllerYamlTest extends AbstractIntegrationTest {
 					.body()
 					.asString();
 		
+		System.out.println(""
+				+ ""
+				+ ""
+				+ ""
+				+ ""
+				+ content + ""
+				+ ""
+				+ ""
+				+ "");
 		
 		assertTrue(content.contains("links:\n"
 				+ "  - rel: \"self\"\n"
