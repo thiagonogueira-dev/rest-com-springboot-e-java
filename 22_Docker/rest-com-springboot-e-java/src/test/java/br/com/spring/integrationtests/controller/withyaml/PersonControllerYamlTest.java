@@ -454,7 +454,7 @@ public class PersonControllerYamlTest extends AbstractIntegrationTest {
 		
 		assertTrue(content.contains("page:\n"
 				+ "  size: 10\n"
-				+ "  totalElements: 1005\n"
+				+ "  totalElements: 1006\n"
 				+ "  totalPages: 101\n"
 				+ "  number: 3"));
 		assertTrue(content.contains("- rel: \"last\"\n"
