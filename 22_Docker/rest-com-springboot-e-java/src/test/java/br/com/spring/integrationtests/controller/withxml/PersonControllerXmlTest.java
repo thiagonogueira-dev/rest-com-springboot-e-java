@@ -360,28 +360,28 @@ public class PersonControllerXmlTest extends AbstractIntegrationTest {
 	
 	@Test
 	@Order(9)
-//	public void testHATEOAS() throws JsonMappingException, JsonProcessingException {
-//		
-//		var content = given().spec(specification)
-//				.contentType(TestConfigs.CONTENT_TYPE_XML)
-//				.accept(TestConfigs.CONTENT_TYPE_XML)
-//				.queryParams("page", 3, "size", 10, "direction", "asc")
-//				.when()
-//					.get()
-//				.then()
-//					.statusCode(200)
-//				.extract()
-//					.body()
-//					.asString();
-//		
-//		assertTrue(content.contains("<links><rel>self</rel><href>http://localhost:8888/api/person/v1/596</href></links>"));
-//		assertTrue(content.contains("<links><rel>self</rel><href>http://localhost:8888/api/person/v1/422</href></links>"));
-//		assertTrue(content.contains("<links><rel>self</rel><href>http://localhost:8888/api/person/v1/933</href></links>"));
-//		
-//		assertTrue(content.contains("<page><size>10</size><totalElements>1006</totalElements><totalPages>101</totalPages><number>3</number></page>"));
-//		assertTrue(content.contains("<links><rel>last</rel><href>http://localhost:8888/api/person/v1?direction=asc&amp;page=100&amp;size=10&amp;sort=firstName,asc</href></links>"));
-//		
-//	}
+	public void testHATEOAS() throws JsonMappingException, JsonProcessingException {
+		
+		var content = given().spec(specification)
+				.contentType(TestConfigs.CONTENT_TYPE_XML)
+				.accept(TestConfigs.CONTENT_TYPE_XML)
+				.queryParams("page", 3, "size", 10, "direction", "asc")
+				.when()
+					.get()
+				.then()
+					.statusCode(200)
+				.extract()
+					.body()
+					.asString();
+		
+		assertTrue(content.contains("<links><rel>self</rel><href>http://localhost:8888/api/person/v1/596</href></links>"));
+		assertTrue(content.contains("<links><rel>self</rel><href>http://localhost:8888/api/person/v1/422</href></links>"));
+		assertTrue(content.contains("<links><rel>self</rel><href>http://localhost:8888/api/person/v1/933</href></links>"));
+		
+		assertTrue(content.contains("<page><size>10</size><totalElements>1005</totalElements><totalPages>101</totalPages><number>3</number></page>"));
+		assertTrue(content.contains("<links><rel>last</rel><href>http://localhost:8888/api/person/v1?direction=asc&amp;page=100&amp;size=10&amp;sort=firstName,asc</href></links>"));
+		
+	}
 
 
 	private void mockPerson() {
